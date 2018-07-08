@@ -1,4 +1,57 @@
-<title>撸死他 - HTML5源码商城</title>
-<h1>html5+源码商城</h1>
-<p>vue、mui、dcloud、html5+视频教程</p>
-<p>小程序搜索"源码商城"</p>
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>html5+源码商城APP下载 - 基于mui和html5+技术开发原生体验app</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style>
+			html {
+				background: #EB7327;
+				text-align: center;
+			}
+			
+			#app {
+				margin: 20px;
+			}
+			
+			#app img {
+				width: 100%;
+				max-width: 800px;
+			}
+		</style>
+		<script type="text/javascript">
+			var ua = navigator.userAgent.toLowerCase();
+			var ios = /iphone|ipad|ipod/.test(ua)
+			var url = '';
+			if(ios) {
+				url = 'https://itunes.apple.com/us/app/html5-%E6%BA%90%E7%A0%81%E5%95%86%E5%9F%8E/id1330074620?l=zh&ls=1&mt=8'
+			} else {
+				url = 'https://api.lusita.cn/app/codeshop.apk'
+			}
+			if(ua.match(/MicroMessenger/i) == 'micromessenger') {
+				if(ios){
+					window.location.href = url
+				}else{
+					alert('微信请点右上角->浏览器打开')
+				} 
+			}
+
+			function down() {
+				window.location.href = url
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="app" onclick="down()" style="cursor: pointer;">
+			<img alt="源码商城APP" src="images/app.jpg" />
+			<p>mui、html5+、流应用、快应用、源码商城</p>
+			<p id="wx" style="color: #eee;display: none ;">(右上角浏览器打开)</p>
+		</div>
+    <h1>html5+源码商城</h1>
+    <p>vue、mui、dcloud、html5+视频教程</p>
+    <p>小程序搜索"源码商城"</p>
+	</body>
+
+</html>
