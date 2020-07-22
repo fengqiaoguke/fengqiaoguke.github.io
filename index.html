@@ -1,3 +1,57 @@
 <title>php8中文网</title>
 
 <h1><a href="https://wiki.php.net/rfc/php8" target="_blank">PHP 8 发布首个 Alpha 版本</a></1>
+
+<p>
+	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
+		<span class="bjh-p">PHP 8 是一个新的主要版本，它引入了一些重大变更，以及许多新特性和性能改进，下边简单介绍一些亮点：</span>
+	</p>
+	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
+		<span class="bjh-p"><span class="bjh-strong" style="font-size:18px;font-weight:700;">JIT，Just-In-Time，即时编译</span></span>
+	</p>
+	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
+		<span class="bjh-p">最重大的特性非 JIT 莫属。该特性的研发历时多年，熬过了 PHP 5 与 7 大版本系列（PHP 6 项目流产），直到去年 3 月份才最终通过投票确认将进入 PHP 8。</span>
+	</p>
+	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
+		<span class="bjh-p">JIT 是一种编译器策略，它将代码表述为一种中间状态，在运行时将其转换为依赖于体系结构的机器码，并即时执行。在 PHP 中，这意味着 JIT 将为 Zend VM 生成的指令视为中间表述，并以依赖于体系结构的机器码执行，也就是说托管代码的不再是 Zend VM，而是更为底层的 CPU。</span>
+	</p>
+	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
+		<span class="bjh-p">虽然自 PHP 7.0 以来，通过优化核心数据结构 HashTable、强化 Zend VM 中某些操作码与持续改进 OPCache 的 Optimizer 组件等具体措施，PHP 性能得到了显著提升，但是实际上这些优化似乎已经走到极限了。现在 JIT 从底层着手，被认为是目前提升 PHP 性能的最佳出路。</span>
+	</p>
+	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
+		<span class="bjh-p">关于引入 JIT 后的性能对比（以及 PHP 8 整体性能），可以参考一下本月 Phoronix 的基准测试（注：用的是 5 月底的源码构建版进行的测试）。</span>
+	</p>
+	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
+		<span class="bjh-p"><span class="bjh-strong" style="font-size:18px;font-weight:700;">Union Types，联合类型</span></span>
+	</p>
+	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
+		<span class="bjh-p">Union Types 支持接收多个不同类型的值，它是两种或多种类型的集合，使用时可以选择其一。包括 PHP 在内的开源生态的标准库中使用联合类型非常普遍，PHP 支持联合类型，将会允许将更多类型信息从 phpdoc 迁移至函数签名。可以说，泛型之后，联合类型是目前类型声明系统中最大的突破口。</span>
+	</p>
+	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
+		<span class="bjh-p"><span class="bjh-strong" style="font-size:18px;font-weight:700;">Attributes，注解</span></span>
+	</p>
+	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
+		<span class="bjh-p">这里的 Attributes 也就是其它语言中的 annotations（注解），它提供了一种向类添加元数据的方法，无需解析文档块。</span>
+	</p>
+	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
+		<span class="bjh-p"><span class="bjh-strong" style="font-size:18px;font-weight:700;">新的 static 返回类型</span></span>
+	</p>
+	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
+		<span class="bjh-p">虽然已经可以返回 self，但是考虑到 PHP 具有动态类型的性质，PHP 8 中支持 static 返回类型将更加高效，对于许多开发者来说应当非常有用。</span>
+	</p>
+	<div class="img-container" style="font-family:arial;background-color:#FFFFFF;">
+		<img class="large" src="https://pics7.baidu.com/feed/dcc451da81cb39dbf7c1d155e665e922ab18302d.jpeg?token=e6b3ec43184960d448ea19a246e9f7c9" style="width:600px;" />
+	</div>
+	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
+		<span class="bjh-p"><span class="bjh-strong" style="font-size:18px;font-weight:700;">WeakMap，弱映射</span></span>
+	</p>
+	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
+		<span class="bjh-p">WeakMaps 允许创建从对象到任意值的映射（类似 SplObjectStorage），而不会阻止对用作 key 的对象进行垃圾回收。只要将对象添加到 WeakMap 中，GC 在触发条件时就可以将其占用内存回收。</span>
+	</p>
+	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
+		<span class="bjh-p">PHP 7.4 中，实际上已经引入了对 WeakReference（弱引用）的支持。但是，原始的弱引用本身用途有限，而弱映射在实践中更为常用。由于没有提供注册销毁回调的功能，因此无法在 PHP 弱引用之上实现有效的弱映射。弱映射的一般用例是将数据与单个对象实例相关联，而不强迫它们保持活动状态，避免长时间运行的进程无谓地占用内存。</span>
+	</p>
+</p>
+<p>
+	<br />
+</p>
