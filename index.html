@@ -7,85 +7,614 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>php8中文网</title>
-<link rel="shortcut icon" href="https://www.php.net/favicon.ico">
+ <link rel="shortcut icon" href="https://www.php.net/favicon.ico">
+ <link rel="search" type="application/opensearchdescription+xml" href="http://php.net/phpnetimprovedsearch.src" title="Add PHP.net search">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/releases/feed.php" title="PHP Release feed">
+ <link rel="alternate" type="application/atom+xml" href="https://www.php.net/feed.atom" title="PHP: Hypertext Preprocessor">
+
+ <link rel="canonical" href="https://www.php.net/releases/8.0/en.php">
+ <link rel="shorturl" href="https://www.php.net/releases/8.0/en">
+ <link rel="alternate" href="https://www.php.net/releases/8.0/en" hreflang="x-default">
+
+
+
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1539771603&amp;f=/fonts/Fira/fira.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1539765004&amp;f=/fonts/Font-Awesome/css/fontello.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1606338002&amp;f=/styles/theme-base.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1540425603&amp;f=/styles/theme-medium.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/cached.php?t=1606338002&amp;f=/styles/php8.css" media="screen">
 	</head>
-<body>
-<h1><a href="https://wiki.php.net/rfc/php8" target="_blank">PHP 8 发布首个 Alpha 版本</a></h1>
-<strong>PHP 8，PHP 的一个新的大版本，预计将于 2020 年 12 月 3 日发布，这意味着将不会有 PHP 7.5 版本。PHP8 目前正处于非常活跃的开发阶段，所以在接下来的几个月里，情况可能会发生很大的变化。</strong>
-<p>
-	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
-		<span class="bjh-p">PHP 8 是一个新的主要版本，它引入了一些重大变更，以及许多新特性和性能改进，下边简单介绍一些亮点：</span>
-	</p>
-	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
-		<span class="bjh-p"><span class="bjh-strong" style="font-size:18px;font-weight:700;">JIT，Just-In-Time，即时编译</span></span>
-	</p>
-	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
-		<span class="bjh-p">最重大的特性非 JIT 莫属。该特性的研发历时多年，熬过了 PHP 5 与 7 大版本系列（PHP 6 项目流产），直到去年 3 月份才最终通过投票确认将进入 PHP 8。</span>
-	</p>
-	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
-		<span class="bjh-p">JIT 是一种编译器策略，它将代码表述为一种中间状态，在运行时将其转换为依赖于体系结构的机器码，并即时执行。在 PHP 中，这意味着 JIT 将为 Zend VM 生成的指令视为中间表述，并以依赖于体系结构的机器码执行，也就是说托管代码的不再是 Zend VM，而是更为底层的 CPU。</span>
-	</p>
-	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
-		<span class="bjh-p">虽然自 PHP 7.0 以来，通过优化核心数据结构 HashTable、强化 Zend VM 中某些操作码与持续改进 OPCache 的 Optimizer 组件等具体措施，PHP 性能得到了显著提升，但是实际上这些优化似乎已经走到极限了。现在 JIT 从底层着手，被认为是目前提升 PHP 性能的最佳出路。</span>
-	</p>
-	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
-		<span class="bjh-p">关于引入 JIT 后的性能对比（以及 PHP 8 整体性能），可以参考一下本月 Phoronix 的基准测试（注：用的是 5 月底的源码构建版进行的测试）。</span>
-	</p>
-	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
-		<span class="bjh-p"><span class="bjh-strong" style="font-size:18px;font-weight:700;">Union Types，联合类型</span></span>
-	</p>
-	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
-		<span class="bjh-p">Union Types 支持接收多个不同类型的值，它是两种或多种类型的集合，使用时可以选择其一。包括 PHP 在内的开源生态的标准库中使用联合类型非常普遍，PHP 支持联合类型，将会允许将更多类型信息从 phpdoc 迁移至函数签名。可以说，泛型之后，联合类型是目前类型声明系统中最大的突破口。</span>
-	</p>
-	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
-		<span class="bjh-p"><span class="bjh-strong" style="font-size:18px;font-weight:700;">Attributes，注解</span></span>
-	</p>
-	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
-		<span class="bjh-p">这里的 Attributes 也就是其它语言中的 annotations（注解），它提供了一种向类添加元数据的方法，无需解析文档块。</span>
-	</p>
-	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
-		<span class="bjh-p"><span class="bjh-strong" style="font-size:18px;font-weight:700;">新的 static 返回类型</span></span>
-	</p>
-	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
-		<span class="bjh-p">虽然已经可以返回 self，但是考虑到 PHP 具有动态类型的性质，PHP 8 中支持 static 返回类型将更加高效，对于许多开发者来说应当非常有用。</span>
-	</p>
- 
-	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
-		<span class="bjh-p"><span class="bjh-strong" style="font-size:18px;font-weight:700;">WeakMap，弱映射</span></span>
-	</p>
-	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
-		<span class="bjh-p">WeakMaps 允许创建从对象到任意值的映射（类似 SplObjectStorage），而不会阻止对用作 key 的对象进行垃圾回收。只要将对象添加到 WeakMap 中，GC 在触发条件时就可以将其占用内存回收。</span>
-	</p>
-	<p style="font-size:16px;color:#333333;text-align:justify;font-family:arial;background-color:#FFFFFF;">
-		<span class="bjh-p">PHP 7.4 中，实际上已经引入了对 WeakReference（弱引用）的支持。但是，原始的弱引用本身用途有限，而弱映射在实践中更为常用。由于没有提供注册销毁回调的功能，因此无法在 PHP 弱引用之上实现有效的弱映射。弱映射的一般用例是将数据与单个对象实例相关联，而不强迫它们保持活动状态，避免长时间运行的进程无谓地占用内存。</span>
-	</p>
-</p>
-<p>
-	<br />
-</p>
-<h1>PHP8新功能JIT 编译器、联合类型和属性</h1>
-<p style="font-family:&quot;font-size:16px;background-color:#FFFFFF;">
-	<p style="font-family:&quot;font-size:16px;background-color:#FFFFFF;">
-		PHP 8.0 也有望在今年发布。程序员&nbsp;Brent Roose&nbsp;透露了即将在 2020 年 11 月底发布的 PHP 8.0 中即将发布的功能。此版本的第一个 Alpha 版将于 6 月 18 日发布。同时，PHP 8.0 将引入多项重大更改，并引入一些新功能，例如 JIT 编译器、联合类型和属性。
-	</p>
-	<p style="font-family:&quot;font-size:16px;background-color:#FFFFFF;">
-		JIT 编译器
-	</p>
-	<p style="font-family:&quot;font-size:16px;background-color:#FFFFFF;">
-		Roose&nbsp;解释称，尽管还没有基准测试，但&nbsp;JIT 编译器有可能改善 PHP 的性能。不像 C 或 Java 这样的编译语言，PHP 是一种解释性语言，这意味着它会在运行时转换为机器码。JIT 在运行时编译部分代码，以便可以使用代码的编译版本。并表示，将 JIT 编译器添加到 PHP 的原因是，它可能使其能够在 Web 开发上下文之外被视为一种高性能语言，并且可以随着时间的流逝而得到改进。但是，一个很大的缺点是维护起来很复杂。
-	</p>
-	<p style="font-family:&quot;font-size:16px;background-color:#FFFFFF;">
-		联合类型
-	</p>
-	<p style="font-family:&quot;font-size:16px;background-color:#FFFFFF;">
-		联合类型是两种或多种类型的集合，表示可以使用其中任何一种。而由于 PHP 是一种动态类型的语言，因此联合类型有很多用例。
-	</p>
-	<p style="font-family:&quot;font-size:16px;background-color:#FFFFFF;">
-		属性
-	</p>
-	<p style="font-family:&quot;font-size:16px;background-color:#FFFFFF;">
-		属性在其他语言中通常称为注解，它提供了一种向类添加元数据的方法，而无需解析文档块。&nbsp;
-	</p>
-</p>
+<body class="php8 ">
+
+<nav id="head-nav" class="navbar navbar-fixed-top">
+  <div class="navbar-inner clearfix">
+    <a href="/" class="brand"><img src="/images/logos/php-logo.svg" width="48" height="24" alt="php"></a>
+    <div id="mainmenu-toggle-overlay"></div>
+    <input type="checkbox" id="mainmenu-toggle">
+    <ul class="nav">
+      <li class=""><a href="/downloads">Downloads</a></li>
+      <li class=""><a href="/docs.php">Documentation</a></li>
+      <li class=""><a href="/get-involved" >Get Involved</a></li>
+      <li class=""><a href="/support">Help</a></li>
+      <li class="active">
+        <a href="/releases/8.0/index.php">
+          <img src="/images/php8/logo_php8.svg" alt="php8" height="22" width="60">
+        </a>
+      </li>
+    </ul>
+    <form class="navbar-search" id="topsearch" action="/search.php">
+      <input type="hidden" name="show" value="quickref">
+      <input type="search" name="pattern" class="search-query" placeholder="Search" accesskey="s">
+    </form>
+  </div>
+  <div id="flash-message"></div>
+</nav>
+<div class="headsup"><a href='/conferences/index.php#id2021-03-31-1'>PHP Russia 2021</a></div>
+<nav id="trick"><div><dl>
+<dt><a href='https://www.php.net/manual/en/getting-started.php'>Getting Started</a></dt>
+	<dd><a href='https://www.php.net/manual/en/introduction.php'>Introduction</a></dd>
+	<dd><a href='https://www.php.net/manual/en/tutorial.php'>A simple tutorial</a></dd>
+<dt><a href='https://www.php.net/manual/en/langref.php'>Language Reference</a></dt>
+	<dd><a href='https://www.php.net/manual/en/language.basic-syntax.php'>Basic syntax</a></dd>
+	<dd><a href='https://www.php.net/manual/en/language.types.php'>Types</a></dd>
+	<dd><a href='https://www.php.net/manual/en/language.variables.php'>Variables</a></dd>
+	<dd><a href='https://www.php.net/manual/en/language.constants.php'>Constants</a></dd>
+	<dd><a href='https://www.php.net/manual/en/language.expressions.php'>Expressions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/language.operators.php'>Operators</a></dd>
+	<dd><a href='https://www.php.net/manual/en/language.control-structures.php'>Control Structures</a></dd>
+	<dd><a href='https://www.php.net/manual/en/language.functions.php'>Functions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/language.oop5.php'>Classes and Objects</a></dd>
+	<dd><a href='https://www.php.net/manual/en/language.namespaces.php'>Namespaces</a></dd>
+	<dd><a href='https://www.php.net/manual/en/language.errors.php'>Errors</a></dd>
+	<dd><a href='https://www.php.net/manual/en/language.exceptions.php'>Exceptions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/language.generators.php'>Generators</a></dd>
+	<dd><a href='https://www.php.net/manual/en/language.attributes.php'>Attributes</a></dd>
+	<dd><a href='https://www.php.net/manual/en/language.references.php'>References Explained</a></dd>
+	<dd><a href='https://www.php.net/manual/en/reserved.variables.php'>Predefined Variables</a></dd>
+	<dd><a href='https://www.php.net/manual/en/reserved.exceptions.php'>Predefined Exceptions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/reserved.interfaces.php'>Predefined Interfaces and Classes</a></dd>
+	<dd><a href='https://www.php.net/manual/en/context.php'>Context options and parameters</a></dd>
+	<dd><a href='https://www.php.net/manual/en/wrappers.php'>Supported Protocols and Wrappers</a></dd>
+</dl>
+<dl>
+<dt><a href='https://www.php.net/manual/en/security.php'>Security</a></dt>
+	<dd><a href='https://www.php.net/manual/en/security.intro.php'>Introduction</a></dd>
+	<dd><a href='https://www.php.net/manual/en/security.general.php'>General considerations</a></dd>
+	<dd><a href='https://www.php.net/manual/en/security.cgi-bin.php'>Installed as CGI binary</a></dd>
+	<dd><a href='https://www.php.net/manual/en/security.apache.php'>Installed as an Apache module</a></dd>
+	<dd><a href='https://www.php.net/manual/en/security.sessions.php'>Session Security</a></dd>
+	<dd><a href='https://www.php.net/manual/en/security.filesystem.php'>Filesystem Security</a></dd>
+	<dd><a href='https://www.php.net/manual/en/security.database.php'>Database Security</a></dd>
+	<dd><a href='https://www.php.net/manual/en/security.errors.php'>Error Reporting</a></dd>
+	<dd><a href='https://www.php.net/manual/en/security.variables.php'>User Submitted Data</a></dd>
+	<dd><a href='https://www.php.net/manual/en/security.hiding.php'>Hiding PHP</a></dd>
+	<dd><a href='https://www.php.net/manual/en/security.current.php'>Keeping Current</a></dd>
+<dt><a href='https://www.php.net/manual/en/features.php'>Features</a></dt>
+	<dd><a href='https://www.php.net/manual/en/features.http-auth.php'>HTTP authentication with PHP</a></dd>
+	<dd><a href='https://www.php.net/manual/en/features.cookies.php'>Cookies</a></dd>
+	<dd><a href='https://www.php.net/manual/en/features.sessions.php'>Sessions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/features.xforms.php'>Dealing with XForms</a></dd>
+	<dd><a href='https://www.php.net/manual/en/features.file-upload.php'>Handling file uploads</a></dd>
+	<dd><a href='https://www.php.net/manual/en/features.remote-files.php'>Using remote files</a></dd>
+	<dd><a href='https://www.php.net/manual/en/features.connection-handling.php'>Connection handling</a></dd>
+	<dd><a href='https://www.php.net/manual/en/features.persistent-connections.php'>Persistent Database Connections</a></dd>
+	<dd><a href='https://www.php.net/manual/en/features.commandline.php'>Command line usage</a></dd>
+	<dd><a href='https://www.php.net/manual/en/features.gc.php'>Garbage Collection</a></dd>
+	<dd><a href='https://www.php.net/manual/en/features.dtrace.php'>DTrace Dynamic Tracing</a></dd>
+</dl>
+<dl>
+<dt><a href='https://www.php.net/manual/en/funcref.php'>Function Reference</a></dt>
+	<dd><a href='https://www.php.net/manual/en/refs.basic.php.php'>Affecting PHP's Behaviour</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.utilspec.audio.php'>Audio Formats Manipulation</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.remote.auth.php'>Authentication Services</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.utilspec.cmdline.php'>Command Line Specific Extensions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.compression.php'>Compression and Archive Extensions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.crypto.php'>Cryptography Extensions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.database.php'>Database Extensions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.calendar.php'>Date and Time Related Extensions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.fileprocess.file.php'>File System Related Extensions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.international.php'>Human Language and Character Encoding Support</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.utilspec.image.php'>Image Processing and Generation</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.remote.mail.php'>Mail Related Extensions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.math.php'>Mathematical Extensions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.utilspec.nontext.php'>Non-Text MIME Output</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.fileprocess.process.php'>Process Control Extensions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.basic.other.php'>Other Basic Extensions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.remote.other.php'>Other Services</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.search.php'>Search Engine Extensions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.utilspec.server.php'>Server Specific Extensions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.basic.session.php'>Session Extensions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.basic.text.php'>Text Processing</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.basic.vartype.php'>Variable and Type Related Extensions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.webservice.php'>Web Services</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.utilspec.windows.php'>Windows Only Extensions</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.xml.php'>XML Manipulation</a></dd>
+	<dd><a href='https://www.php.net/manual/en/refs.ui.php'>GUI Extensions</a></dd>
+</dl>
+<dl>
+<dt>Keyboard Shortcuts</dt><dt>?</dt>
+<dd>This help</dd>
+<dt>j</dt>
+<dd>Next menu item</dd>
+<dt>k</dt>
+<dd>Previous menu item</dd>
+<dt>g p</dt>
+<dd>Previous man page</dd>
+<dt>g n</dt>
+<dd>Next man page</dd>
+<dt>G</dt>
+<dd>Scroll to bottom</dd>
+<dt>g g</dt>
+<dd>Scroll to top</dd>
+<dt>g h</dt>
+<dd>Goto homepage</dd>
+<dt>g s</dt>
+<dd>Goto search<br>(current page)</dd>
+<dt>/</dt>
+<dd>Focus search box</dd>
+</dl></div></nav>
+<div id="goto">
+    <div class="search">
+         <div class="text"></div>
+         <div class="results"><ul></ul></div>
+   </div>
+</div>
+
+
+
+
+
+<div id="layout" class="clearfix">
+  <section id="layout-content">
+<section class="php8-section php8-section_dark php8-section_header center">
+  <div class="page-tools">
+    <div class="change-language">
+        
+      <form action="" method="get" id="changelang" name="changelang">
+        <fieldset>
+          <label for="changelang-langs">Change language:</label>
+          <select onchange="location = this.value + '.php'" name="lang" id="changelang-langs">
+            <option value='en' selected="selected">English</option>
+            <option value='de'>Deutsch</option>
+            <option value='es'>Español</option>
+            <option value='fr'>Français</option>
+            <option value='it'>Italiano</option>
+            <option value='ja'>日本語</option>
+            <option value='nl'>Nederlands</option>
+            <option value='pt_BR'>Português do Brasil</option>
+            <option value='ru'>Русский</option>
+            <option value='tr'>Türkçe</option>
+            <option value='zh'>简体中文</option>
+          </select>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div class="php8-section__content">
+    <div class="php8-logo">
+      <img src="/images/php8/logo_php8.svg" alt="php8" height="126" width="343">
+    </div>
+    <div class="php8-title">Released!</div>
+    <div class="php8-subtitle">
+      PHP 8.0 is a major update of the PHP language.<br class="display-none-md"> It contains many new features and
+      optimizations including named arguments, union types, attributes, constructor property promotion, match
+      expression, nullsafe operator, JIT, and improvements in the type system, error handling, and consistency.
+    </div>
+    <div class="php8-button-wrapper center">
+      <a class="php8-button php8-button_light" href="/downloads">Go update to PHP 8!</a>
+    </div>
+  </div>
+</section>
+
+<section class="php8-section center">
+  <div class="php8-compare">
+    <h2 class="php8-h2" id="named-arguments">
+      Named arguments
+      <a class="php8-rfc" href="https://wiki.php.net/rfc/named_params">RFC</a>
+    </h2>
+    <div class="php8-compare__main">
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label">PHP 7</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default">htmlspecialchars</span><span class="keyword">(</span><span class="default">$string</span><span class="keyword">, </span><span class="default">ENT_COMPAT </span><span class="keyword">| </span><span class="default">ENT_HTML401</span><span class="keyword">, </span><span class="string">'UTF-8'</span><span class="keyword">, </span><span class="default">false</span><span class="keyword">);</span>
+</span>
+</code></div>        </div>
+
+
+      </div>
+      <div class="php8-compare__arrow"></div>
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label php8-compare__label_new">PHP 8</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default">htmlspecialchars</span><span class="keyword">(</span><span class="default">$string</span><span class="keyword">, </span><span class="default">double_encode</span><span class="keyword">: </span><span class="default">false</span><span class="keyword">);</span>
+</span>
+</code></div>        </div>
+      </div>
+    </div>
+    <div class="php8-compare__content">
+      <ul>
+        <li>Specify only required parameters, skipping optional ones.</li>
+        <li>Arguments are order-independent and self-documented.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="php8-compare">
+    <h2 class="php8-h2" id="attributes">
+      Attributes
+      <a class="php8-rfc" href="https://wiki.php.net/rfc/attributes_v2">RFC</a> <a class="php8-rfc" href="https://www.php.net/manual/en/language.attributes.php">Doc</a>
+    </h2>
+    <div class="php8-compare__main">
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label">PHP 7</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default"></span><span class="keyword">class </span><span class="default">PostsController<br /></span><span class="keyword">{<br />&nbsp; &nbsp; </span><span class="comment">/**<br />&nbsp; &nbsp;&nbsp; * @Route("/api/posts/{id}", methods={"GET"})<br />&nbsp; &nbsp;&nbsp; */<br />&nbsp; &nbsp; </span><span class="keyword">public function </span><span class="default">get</span><span class="keyword">(</span><span class="default">$id</span><span class="keyword">) { </span><span class="comment">/* ... */ </span><span class="keyword">}<br />}</span>
+</span>
+</code></div>        </div>
+      </div>
+      <div class="php8-compare__arrow"></div>
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label php8-compare__label_new">PHP 8</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default"></span><span class="keyword">class </span><span class="default">PostsController<br /></span><span class="keyword">{<br />&nbsp; &nbsp; </span><span class="comment">#[Route("/api/posts/{id}", methods: ["GET"])]<br />&nbsp; &nbsp; </span><span class="keyword">public function </span><span class="default">get</span><span class="keyword">(</span><span class="default">$id</span><span class="keyword">) { </span><span class="comment">/* ... */ </span><span class="keyword">}<br />}</span>
+</span>
+</code></div>        </div>
+      </div>
+    </div>
+    <div class="php8-compare__content">
+      <p>Instead of PHPDoc annotations, you can now use structured metadata with PHP's native syntax.</p>
+    </div>
+  </div>
+
+  <div class="php8-compare">
+    <h2 class="php8-h2" id="constructor-property-promotion">
+      Constructor property promotion
+      <a class="php8-rfc" href="https://wiki.php.net/rfc/constructor_promotion">RFC</a> <a class="php8-rfc" href="https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion">Doc</a>
+    </h2>
+    <div class="php8-compare__main">
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label">PHP 7</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default"></span><span class="keyword">class </span><span class="default">Point </span><span class="keyword">{<br />&nbsp; public </span><span class="default">float $x</span><span class="keyword">;<br />&nbsp; public </span><span class="default">float $y</span><span class="keyword">;<br />&nbsp; public </span><span class="default">float $z</span><span class="keyword">;<br /><br />&nbsp; public function </span><span class="default">__construct</span><span class="keyword">(<br />&nbsp; &nbsp; </span><span class="default">float $x </span><span class="keyword">= </span><span class="default">0.0</span><span class="keyword">,<br />&nbsp; &nbsp; </span><span class="default">float $y </span><span class="keyword">= </span><span class="default">0.0</span><span class="keyword">,<br />&nbsp; &nbsp; </span><span class="default">float $z </span><span class="keyword">= </span><span class="default">0.0<br />&nbsp; </span><span class="keyword">) {<br />&nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">x </span><span class="keyword">= </span><span class="default">$x</span><span class="keyword">;<br />&nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">y </span><span class="keyword">= </span><span class="default">$y</span><span class="keyword">;<br />&nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">z </span><span class="keyword">= </span><span class="default">$z</span><span class="keyword">;<br />&nbsp; }<br />}</span>
+</span>
+</code></div>        </div>
+      </div>
+      <div class="php8-compare__arrow"></div>
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label php8-compare__label_new">PHP 8</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default"></span><span class="keyword">class </span><span class="default">Point </span><span class="keyword">{<br />&nbsp; public function </span><span class="default">__construct</span><span class="keyword">(<br />&nbsp; &nbsp; public </span><span class="default">float $x </span><span class="keyword">= </span><span class="default">0.0</span><span class="keyword">,<br />&nbsp; &nbsp; public </span><span class="default">float $y </span><span class="keyword">= </span><span class="default">0.0</span><span class="keyword">,<br />&nbsp; &nbsp; public </span><span class="default">float $z </span><span class="keyword">= </span><span class="default">0.0</span><span class="keyword">,<br />&nbsp; ) {}<br />}</span>
+</span>
+</code></div>        </div>
+      </div>
+    </div>
+    <div class="php8-compare__content">
+      <p>Less boilerplate code to define and initialize properties.</p>
+    </div>
+  </div>
+
+  <div class="php8-compare">
+    <h2 class="php8-h2" id="union-types">
+      Union types
+      <a class="php8-rfc" href="https://wiki.php.net/rfc/union_types_v2">RFC</a> <a class="php8-rfc" href="https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.union">Doc</a>
+    </h2>
+    <div class="php8-compare__main">
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label">PHP 7</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default"></span><span class="keyword">class </span><span class="default">Number </span><span class="keyword">{<br />&nbsp; </span><span class="comment">/** @var int|float */<br />&nbsp; </span><span class="keyword">private </span><span class="default">$number</span><span class="keyword">;<br /><br />&nbsp; </span><span class="comment">/**<br />&nbsp;&nbsp; * @param float|int $number<br />&nbsp;&nbsp; */<br />&nbsp; </span><span class="keyword">public function </span><span class="default">__construct</span><span class="keyword">(</span><span class="default">$number</span><span class="keyword">) {<br />&nbsp; &nbsp; </span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">number </span><span class="keyword">= </span><span class="default">$number</span><span class="keyword">;<br />&nbsp; }<br />}<br /><br />new </span><span class="default">Number</span><span class="keyword">(</span><span class="string">'NaN'</span><span class="keyword">); </span><span class="comment">// Ok</span>
+</span>
+</code></div>        </div>
+      </div>
+      <div class="php8-compare__arrow"></div>
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label php8-compare__label_new">PHP 8</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default"></span><span class="keyword">class </span><span class="default">Number </span><span class="keyword">{<br />&nbsp; public function </span><span class="default">__construct</span><span class="keyword">(<br />&nbsp; &nbsp; private </span><span class="default">int</span><span class="keyword">|</span><span class="default">float $number<br />&nbsp; </span><span class="keyword">) {}<br />}<br /><br />new </span><span class="default">Number</span><span class="keyword">(</span><span class="string">'NaN'</span><span class="keyword">); </span><span class="comment">// TypeError</span>
+</span>
+</code></div>        </div>
+      </div>
+    </div>
+    <div class="php8-compare__content">
+      <p>Instead of PHPDoc annotations for a combination of types, you can use native union type declarations that are
+        validated at runtime.</p>
+    </div>
+  </div>
+
+  <div class="php8-compare">
+    <h2 class="php8-h2" id="match-expression">
+      Match expression
+      <a class="php8-rfc" href="https://wiki.php.net/rfc/match_expression_v2">RFC</a> <a class="php8-rfc" href="https://www.php.net/manual/en/control-structures.match.php">Doc</a>
+    </h2>
+    <div class="php8-compare__main">
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label">PHP 7</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default"></span><span class="keyword">switch (</span><span class="default">8.0</span><span class="keyword">) {<br />&nbsp; case </span><span class="string">'8.0'</span><span class="keyword">:<br />&nbsp; &nbsp; </span><span class="default">$result </span><span class="keyword">= </span><span class="string">"Oh no!"</span><span class="keyword">;<br />&nbsp; &nbsp; break;<br />&nbsp; case </span><span class="default">8.0</span><span class="keyword">:<br />&nbsp; &nbsp; </span><span class="default">$result </span><span class="keyword">= </span><span class="string">"This is what I expected"</span><span class="keyword">;<br />&nbsp; &nbsp; break;<br />}<br />echo </span><span class="default">$result</span><span class="keyword">;<br /></span><span class="comment">//&gt; Oh no!</span>
+</span>
+</code></div>        </div>
+      </div>
+      <div class="php8-compare__arrow"></div>
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label php8-compare__label_new">PHP 8</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default"></span><span class="keyword">echo </span><span class="default">match </span><span class="keyword">(</span><span class="default">8.0</span><span class="keyword">) {<br />&nbsp; </span><span class="string">'8.0' </span><span class="keyword">=&gt; </span><span class="string">"Oh no!"</span><span class="keyword">,<br />&nbsp; </span><span class="default">8.0 </span><span class="keyword">=&gt; </span><span class="string">"This is what I expected"</span><span class="keyword">,<br />};<br /></span><span class="comment">//&gt; This is what I expected</span>
+</span>
+</code></div>        </div>
+      </div>
+    </div>
+    <div class="php8-compare__content">
+      <p>The new match is similar to switch and has the following features:</p>
+      <ul>
+        <li>Match is an expression, meaning its result can be stored in a variable or returned.</li>
+        <li>Match branches only support single-line expressions and do not need a break; statement.</li>
+        <li>Match does strict comparisons.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="php8-compare">
+    <h2 class="php8-h2" id="nullsafe-operator">
+      Nullsafe operator
+      <a class="php8-rfc" href="https://wiki.php.net/rfc/nullsafe_operator">RFC</a>
+    </h2>
+    <div class="php8-compare__main">
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label">PHP 7</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default">$country </span><span class="keyword">=&nbsp; </span><span class="default">null</span><span class="keyword">;<br /><br />if (</span><span class="default">$session </span><span class="keyword">!== </span><span class="default">null</span><span class="keyword">) {<br />&nbsp; </span><span class="default">$user </span><span class="keyword">= </span><span class="default">$session</span><span class="keyword">-&gt;</span><span class="default">user</span><span class="keyword">;<br /><br />&nbsp; if (</span><span class="default">$user </span><span class="keyword">!== </span><span class="default">null</span><span class="keyword">) {<br />&nbsp; &nbsp; </span><span class="default">$address </span><span class="keyword">= </span><span class="default">$user</span><span class="keyword">-&gt;</span><span class="default">getAddress</span><span class="keyword">();<br />&nbsp; <br />&nbsp; &nbsp; if (</span><span class="default">$address </span><span class="keyword">!== </span><span class="default">null</span><span class="keyword">) {<br />&nbsp; &nbsp; &nbsp; </span><span class="default">$country </span><span class="keyword">= </span><span class="default">$address</span><span class="keyword">-&gt;</span><span class="default">country</span><span class="keyword">;<br />&nbsp; &nbsp; }<br />&nbsp; }<br />}</span>
+</span>
+</code></div>        </div>
+      </div>
+      <div class="php8-compare__arrow"></div>
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label php8-compare__label_new">PHP 8</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default">$country </span><span class="keyword">= </span><span class="default">$session</span><span class="keyword">?-&gt;</span><span class="default">user</span><span class="keyword">?-&gt;</span><span class="default">getAddress</span><span class="keyword">()?-&gt;</span><span class="default">country</span><span class="keyword">;</span>
+</span>
+</code></div>        </div>
+      </div>
+    </div>
+    <div class="php8-compare__content">
+      <p>Instead of null check conditions, you can now use a chain of calls with the new nullsafe operator. When the
+        evaluation of one element in the chain fails, the execution of the entire chain aborts and the entire chain
+        evaluates to null.</p>
+    </div>
+  </div>
+
+  <div class="php8-compare">
+    <h2 class="php8-h2" id="saner-string-to-number-comparisons">
+      Saner string to number comparisons
+      <a class="php8-rfc" href="https://wiki.php.net/rfc/string_to_number_comparison">RFC</a>
+    </h2>
+    <div class="php8-compare__main">
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label">PHP 7</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default">0 </span><span class="keyword">== </span><span class="string">'foobar' </span><span class="comment">// true</span>
+</span>
+</code></div>        </div>
+      </div>
+      <div class="php8-compare__arrow"></div>
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label php8-compare__label_new">PHP 8</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default">0 </span><span class="keyword">== </span><span class="string">'foobar' </span><span class="comment">// false</span>
+</span>
+</code></div>        </div>
+      </div>
+    </div>
+    <div class="php8-compare__content">
+      <p>When comparing to a numeric string, PHP 8 uses a number comparison. Otherwise, it converts the number to a
+        string and uses a string comparison.</p>
+    </div>
+  </div>
+
+  <div class="php8-compare">
+    <h2 class="php8-h2" id="consistent-type-errors-for-internal-functions">
+      Consistent type errors for internal functions
+      <a class="php8-rfc" href="https://wiki.php.net/rfc/consistent_type_errors">RFC</a>
+    </h2>
+    <div class="php8-compare__main">
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label">PHP 7</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default">strlen</span><span class="keyword">([]); </span><span class="comment">// Warning: strlen() expects parameter 1 to be string, array given<br /><br /></span><span class="default">array_chunk</span><span class="keyword">([], -</span><span class="default">1</span><span class="keyword">); </span><span class="comment">// Warning: array_chunk(): Size parameter expected to be greater than 0</span>
+</span>
+</code></div>        </div>
+      </div>
+      <div class="php8-compare__arrow"></div>
+      <div class="php8-compare__block example-contents">
+        <div class="php8-compare__label php8-compare__label_new">PHP 8</div>
+        <div class="php8-code phpcode">
+            <div class="phpcode"><code><span class="html">
+<span class="default">strlen</span><span class="keyword">([]); </span><span class="comment">// TypeError: strlen(): Argument #1 ($str) must be of type string, array given<br /><br /></span><span class="default">array_chunk</span><span class="keyword">([], -</span><span class="default">1</span><span class="keyword">); </span><span class="comment">// ValueError: array_chunk(): Argument #2 ($length) must be greater than 0</span>
+</span>
+</code></div>        </div>
+      </div>
+    </div>
+    <div class="php8-compare__content">
+      <p>Most of the internal functions now throw an Error exception if the validation of the parameters fails.</p>
+    </div>
+  </div>
+</section>
+
+<section class="php8-section php8-section_light">
+  <h2 class="php8-h2">Just-In-Time compilation</h2>
+  <p>
+    PHP 8 introduces two JIT compilation engines. Tracing JIT, the most promising of the two, shows about 3 times better
+    performance on synthetic benchmarks and 1.5–2 times improvement on some specific long-running applications. Typical
+    application performance is on par with PHP 7.4.
+  </p>
+  <h3 class="php8-h3">
+    Relative JIT contribution to PHP 8 performance
+  </h3>
+  <p>
+    <img src="/images/php8/scheme.svg" width="900" alt="Just-In-Time compilation">
+  </p>
+
+  <div class="php8-columns">
+    <div class="php8-column">
+      <h2 class="php8-h2 php8-h2_margin-top">Type system and error handling improvements</h2>
+      <ul>
+        <li>
+          Stricter type checks for arithmetic/bitwise operators
+          <a href="https://wiki.php.net/rfc/arithmetic_operator_type_checks">RFC</a>
+        </li>
+        <li>
+          Abstract trait method validation <a href="https://wiki.php.net/rfc/abstract_trait_method_validation">RFC</a>
+        </li>
+        <li>
+          Correct signatures of magic methods <a href="https://wiki.php.net/rfc/magic-methods-signature">RFC</a>
+        </li>
+        <li>
+          Reclassified engine warnings <a href="https://wiki.php.net/rfc/engine_warnings">RFC</a>
+        </li>
+        <li>
+          Fatal error for incompatible method signatures <a href="https://wiki.php.net/rfc/lsp_errors">RFC</a>
+        </li>
+        <li>
+          The @ operator no longer silences fatal errors.
+        </li>
+        <li>
+          Inheritance with private methods <a href="https://wiki.php.net/rfc/inheritance_private_methods">RFC</a>
+        </li>
+        <li>
+          Mixed type <a href="https://wiki.php.net/rfc/mixed_type_v2">RFC</a>
+        </li>
+        <li>
+          Static return type <a href="https://wiki.php.net/rfc/static_return_type">RFC</a>
+        </li>
+        <li>
+          Types for internal functions
+          <a href="https://externals.io/message/106522">Email thread</a>
+        </li>
+        <li>
+          Opaque objects instead of resources for
+            <a href="https://php.watch/versions/8.0/resource-CurlHandle">Curl</a>,
+            <a href="https://php.watch/versions/8.0/gdimage">Gd</a>,
+            <a href="https://php.watch/versions/8.0/sockets-sockets-addressinfo">Sockets</a>,
+            <a href="https://php.watch/versions/8.0/OpenSSL-resource">OpenSSL</a>,
+            <a href="https://php.watch/versions/8.0/xmlwriter-resource">XMLWriter</a>, and
+            <a href="https://php.watch/versions/8.0/xmlwriter-resource">XML</a>
+            extensions
+        </li>
+      </ul>
+    </div>
+    <div class="php8-column">
+      <h2 class="php8-h2 php8-h2_margin-top">Other syntax tweaks and improvements</h2>
+      <ul>
+        <li>
+          Allow a trailing comma in parameter lists <a href="https://wiki.php.net/rfc/trailing_comma_in_parameter_list">RFC</a>
+          and closure use lists <a href="https://wiki.php.net/rfc/trailing_comma_in_closure_use_list">RFC</a>
+        </li>
+        <li>
+          Non-capturing catches <a href="https://wiki.php.net/rfc/non-capturing_catches">RFC</a>
+        </li>
+        <li>
+          Variable Syntax Tweaks <a href="https://wiki.php.net/rfc/variable_syntax_tweaks">RFC</a>
+        </li>
+        <li>
+          Treat namespaced names as single token <a href="https://wiki.php.net/rfc/namespaced_names_as_token">RFC</a>
+        </li>
+        <li>
+          Throw is now an expression <a href="https://wiki.php.net/rfc/throw_expression">RFC</a>
+        </li>
+        <li>
+          Allow ::class on objects <a href="https://wiki.php.net/rfc/class_name_literal_on_object">RFC</a>
+        </li>
+      </ul>
+
+      <h2 class="php8-h2 php8-h2_margin-top">New Classes, Interfaces, and Functions</h2>
+      <ul>
+        <li>
+          <a href="https://wiki.php.net/rfc/weak_maps">Weak Map</a> class
+        </li>
+        <li>
+          <a href="https://wiki.php.net/rfc/stringable">Stringable</a> interface
+        </li>
+        <li>
+          <a href="https://wiki.php.net/rfc/str_contains">str_contains()</a>,
+          <a href="https://wiki.php.net/rfc/add_str_starts_with_and_ends_with_functions">str_starts_with()</a>,
+          <a href="https://wiki.php.net/rfc/add_str_starts_with_and_ends_with_functions">str_ends_with()</a>
+        </li>
+        <li>
+          <a href="https://github.com/php/php-src/pull/4769">fdiv()</a>
+        </li>
+        <li>
+          <a href="https://wiki.php.net/rfc/get_debug_type">get_debug_type()</a>
+        </li>
+        <li>
+          <a href="https://github.com/php/php-src/pull/5427">get_resource_id()</a>
+        </li>
+        <li>
+          <a href="https://wiki.php.net/rfc/token_as_object">token_get_all()</a> object implementation
+        </li>
+        <li>
+          <a href="https://wiki.php.net/rfc/dom_living_standard_api">New DOM Traversal and Manipulation APIs</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="php8-section php8-section_dark php8-section_footer php8-footer">
+  <div class="php8-section__content">
+    <h2 class="php8-h2 center">
+      Better performance, better syntax, improved type safety.
+    </h2>
+    <div class="php8-button-wrapper center">
+      <a class="php8-button php8-button_light" href="/downloads">Go update to PHP 8!</a>
+    </div>
+    <div class="php8-footer__content">
+      <p>
+        For source downloads of PHP 8 please visit the <a href="http://www.php.net/downloads">downloads</a> page.
+        Windows binaries can be found on the <a href="http://windows.php.net/download">PHP for Windows</a> site.
+        The list of changes is recorded in the <a href="http://www.php.net/ChangeLog-8.php">ChangeLog</a>.
+      </p>
+      <p>
+        The <a href="https://www.php.net/manual/en/migration80.php">migration guide</a> is available in the PHP Manual. Please
+        consult it for a detailed list of new features and backward-incompatible changes.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+    </section><!-- layout-content -->
+    
+
+  </div><!-- layout -->
+
+  <footer>
+    <div class="container footer-content">
+      <div class="row-fluid">
+      <ul class="footmenu">
+        <li><a href="/copyright.php">Copyright &copy; 2001-2021 The PHP Group</a></li>
+        <li><a href="/my.php">My PHP.net</a></li>
+        <li><a href="/contact.php">Contact</a></li>
+        <li><a href="/sites.php">Other PHP.net sites</a></li>
+        <li><a href="/privacy.php">Privacy policy</a></li>
+      </ul>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
